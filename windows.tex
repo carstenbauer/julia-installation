@@ -97,9 +97,9 @@
 
 	Dies bestätigen wir durch Drücken der \texttt{Enter}-Taste. Die Installation von Jupyter kann eventuell einige Minuten dauern. Die Installation ist abgeschlossen, wenn sie wieder das grüne \texttt{julia>} Zeichen am Anfang der Zeile sehen.
 	
-	\section{IJulia starten}
+	\section{IJulia und Jupyter starten}
 	
-	Um IJulia Notebooks erstellen oder öffnen zu können, müssen wir immer zuerst Julia und den IJulia Server starten. Dazu führen wir den folgenden Befehl in der Julia Konsole aus (öffnen Sie diese per Doppelklick auf das Julia Logo auf dem Desktop, falls sie nicht bereits offen ist):
+	Um Jupyter Notebooks erstellen oder öffnen zu können, müssen wir immer zuerst Julia und dann den Jupyter Server starten. Dazu führen wir den folgenden Befehl in der Julia Konsole aus (öffnen Sie diese per Doppelklick auf das Julia Logo auf dem Desktop, falls sie nicht bereits offen ist):
 	
 	\begin{lstlisting}
 	using IJulia; notebook()
@@ -109,13 +109,34 @@
 	
 	\begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.8\textwidth]{imgs/jupyter.png}
+	\includegraphics[width=0.7\textwidth]{imgs/jupyter.png}
+	\caption{Die Startseite des Jupyter Interfaces. \label{fig:jupyter}}
 	\end{figure}
 	
 	Der Server läuft solange die Julia Konsole im Hintergrund geöffnet ist. Sobald wir diese schließen wird der Server gestoppt.
 	
+	\newpage
+	\section{Einfacher Test das alles funktioniert}
 	
+	Klicken Sie im Jupyter Interface (Fig. \ref{fig:jupyter}) rechts oben auf den Button \texttt{New} und klicken Sie danach im sich öffnenden Kontextmenü auf den Eintrag \texttt{Julia 1.1.0}. Es sollte sich nun ein frisches Jupyter Notebook öffnen:
 	
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\textwidth]{imgs/jupyter_notebook.png}
+	\end{figure}
+
+	Klicken Sie in die erste (und einzige) Zelle des Notebooks und geben Sie dort
 	
+	\begin{lstlisting}
+	3+3
+	\end{lstlisting}
+	ein. Führen Sie die Zelle per \texttt{SHIFT + ENTER} aus (gleichzeitiges Drücken der \texttt{SHIFT} bzw. \texttt{UMSCHALT} und der \texttt{ENTER} Taste). Es sollte das Ergebnis \texttt{6} erscheinen:
+
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\textwidth]{imgs/jupyter_notebook_test.png}
+	\end{figure}	
+
+	Die Installation von Julia, IJulia und Jupyter war also erfolgreich!
 	
 \end{document}
