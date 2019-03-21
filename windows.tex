@@ -65,11 +65,30 @@
 	Setzen Sie beim dritten Auswahlpunkt \texttt{Create desktop shortcut} einen Haken, damit eine Julia Verknüpfung auf dem Desktop erstellt wird. Schließen Sie die Installation mit einem Klick auf \texttt{Finish} ab.
 	
 	\newpage
-	\section{IJulia und Jupyter installieren}
+	\section{Das erste Mal Julia}
+	Starten Sie Julia durch einen Doppelklick auf das Julia Logo auf dem Desktop (oder alternativ per Startmenü). Es erscheint das folgende Fenster:
 	
-	Neben der Programmiersprache Julia selbst, benötigen wir noch IJulia, um Julia bequem im Browser in sogenannten Jupyter Notebooks verwenden zu können. Im folgenden wollen wir IJulia installieren.
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{imgs/julia_REPL.png}
+	\end{figure}
 
-	Starten Sie Julia durch einen Doppelklick auf das Julia Logo auf dem Desktop (oder per Startmenü). Führen Sie folgenden Befehl aus, indem Sie ihn abtippen (bitte nicht kopieren und einfügen) und mit der \texttt{Enter}-Taste bestätigen.
+	Dies ist die Julia Konsole (auch Julia REPL genannt). Sie ist eine Möglichkeit Julia zu verwenden. Geben Sie zum Test
+	
+	\begin{lstlisting}
+		3+3
+	\end{lstlisting}
+	
+	ein und führen Sie den Befehl per \texttt{Enter}-Taste aus. Sie sollten nicht überraschend das Ergebnis 6 erhalten.
+	
+	Auch wenn die Konsole prinzipiell genügt um in Julia zu Programmieren, ist sie doch sehr rudimentär. Im folgenden wollen wir eine viel schickere und Benutzerfreundlichere Julia Oberfläche installieren.
+	
+	\newpage
+	\section{IJulia installieren}
+	
+	Neben der Programmiersprache Julia wollen wir noch IJulia und Jupyter installieren, um Julia bequem im Browser in sogenannten Notebooks verwenden zu können. Grob gesagt ist Jupyter eine Notebook Oberfläche für verschiedene Programmiersprachen und IJulia die Schnittstelle zwischen Julia und Jupyter. In dieser Sektion werden wir zunächst IJulia installieren.
+
+	Führen Sie folgenden Befehl in der Julia Konsole aus, indem Sie ihn abtippen (Kopieren und Einfügen ist in der Julia Konsole nicht ganz einfach) und mit der \texttt{Enter}-Taste bestätigen.
 	
 	\begin{lstlisting}
 		using Pkg; Pkg.add("IJulia");
@@ -82,30 +101,26 @@
 	\includegraphics[width=0.9\textwidth]{imgs/IJulia_install.png}
 	\end{figure}
 
-	IJulia ist nun erfolgreich installiert. Führen Sie nun den Befehl
+	IJulia ist nun erfolgreich installiert.
 	
-	\begin{lstlisting}
-	using IJulia
-	\end{lstlisting}
+	\section{Jupyter installieren und das erste Mal starten}
 	
-	aus. Julia stellt fest, das Jupyter noch nicht vorhanden ist, und fragt uns, ob wir es installieren wollen:
-	
-	\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.9\textwidth]{imgs/Jupyter_install.png}
-	\end{figure}
-
-	Dies bestätigen wir durch Drücken der \texttt{Enter}-Taste. Die Installation von Jupyter kann eventuell einige Minuten dauern. Die Installation ist abgeschlossen, wenn sie wieder das grüne \texttt{julia>} Zeichen am Anfang der Zeile sehen.
-	
-	\section{IJulia und Jupyter starten}
-	
-	Um Jupyter Notebooks erstellen oder öffnen zu können, müssen wir immer zuerst Julia und dann den Jupyter Server starten. Dazu führen wir den folgenden Befehl in der Julia Konsole aus (öffnen Sie diese per Doppelklick auf das Julia Logo auf dem Desktop, falls sie nicht bereits offen ist):
+	Um Notebooks erstellen oder öffnen zu können, müssen wir immer zuerst Julia öffnen, IJulia laden und dann den Jupyter Notebook Server starten. Die Julia Konsole sollte nach dem vorangegangenen Abschnitt noch offen sein (falls nicht öffnen Sie sie erneut per Doppelklick auf das Julia Logo auf dem Desktop). Führen Sie folgenden Befehl aus:
 	
 	\begin{lstlisting}
 	using IJulia; notebook()
 	\end{lstlisting}
 	
-	Es sollte sich der Browser öffnen und das Jupyter Notebook Interface erscheinen (Ordner, Dateien und Sprache können abweichen):
+	Der erste Teil, \texttt{using IJulia}, lädt IJulia. Der zweite Teil des Befehls, \texttt{notebook()}, versucht den Jupyter Notebook Server zu starten. Beim ersten Mal wird Julia feststellen, dass dieser noch nicht vorhanden ist und fragt uns, ob es Jupyter für uns installieren soll:
+	
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\textwidth]{imgs/Jupyter_install.png}
+	\end{figure}
+	
+	Dies bestätigen wir mit einem Druck der \texttt{Enter}-Taste. Die Installation von Jupyter kann einige Minuten in Anspruch nehmen.
+	
+	Nach Abschluss der Installation sollte sich automatisch der Browser öffnen und das Jupyter Notebook Interface erscheinen (Ordner, Dateien und Sprache können abweichen):
 	
 	\begin{figure}[h!]
 	\centering
@@ -116,9 +131,9 @@
 	Der Server läuft solange die Julia Konsole im Hintergrund geöffnet ist. Sobald wir diese schließen wird der Server gestoppt.
 	
 	\newpage
-	\section{Einfacher Test das alles funktioniert}
+	\section{Einfacher Test der Notebook Oberfläche}
 	
-	Klicken Sie im Jupyter Interface (Fig. \ref{fig:jupyter}) rechts oben auf den Button \texttt{New} und klicken Sie danach im sich öffnenden Kontextmenü auf den Eintrag \texttt{Julia 1.1.0}. Es sollte sich nun ein frisches Jupyter Notebook öffnen:
+	Klicken Sie in der Jupyter Oberfläche (Fig. \ref{fig:jupyter}) rechts oben auf den Button \texttt{New} und klicken Sie danach im sich öffnenden Kontextmenü auf den Eintrag \texttt{Julia 1.1.0}. Es sollte sich nun ein frisches Jupyter Notebook öffnen:
 	
 	\begin{figure}[h!]
 	\centering
@@ -137,6 +152,6 @@
 	\includegraphics[width=0.9\textwidth]{imgs/jupyter_notebook_test.png}
 	\end{figure}	
 
-	Die Installation von Julia, IJulia und Jupyter war also erfolgreich!
+	Die Installation von Julia, IJulia und Jupyter war also erfolgreich und die Computer-Physik kann beginnen!
 	
 \end{document}
