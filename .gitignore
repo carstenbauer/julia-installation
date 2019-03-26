@@ -1,7 +1,7 @@
-*.gz
-*.pdf
-*.log
-*.aux
-*.out
-*.bbl
-*.blg
+**/*.gz
+**/*.pdf
+**/*.log
+**/*.aux
+**/*.out
+**/*.bbl
+**/*.blg
