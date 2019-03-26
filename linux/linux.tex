@@ -59,14 +59,7 @@
 		\includegraphics[width=\textwidth]{imgs/download.png}
 	\end{figure}
 
-	Extrahieren Sie den enthaltenen \texttt{julia-1.1.0} Ordner in einen Pfad Ihrer Wahl. Desweiteren erstellen Sie einen symbolischen Link zur enthaltenen \texttt{julia} executable in ihren \texttt{/usr/bin} Ordner mittels
-	
-	\begin{lstlisting}
-		ln -s LINK_TO_JULIA_FILE /usr/bin/julia 
-	\end{lstlisting}
-	
-	
-	Jetzt ist sicher gestellt, dass Sie Julia mittels der Eingabe \texttt{julia} in Ihrem Terminal starten können.
+	Extrahieren Sie den enthaltenen \texttt{julia-1.1.0} Ordner in einen Pfad Ihrer Wahl -- damit ist Julia jetzt bei Ihnen installiert.
 	
 	
 	
@@ -83,11 +76,11 @@
 	
 	\newpage
 	\section{Das erste Mal Julia}
-	Starten Sie Julia mittels Eingabe \texttt{julia} in Ihrem Terminal. Es erscheint das folgende Fenster:
+	Starten Sie Julia aus Ihrem Terminal heraus indem Sie die Datei \texttt{bin/julia} in dem (im vorherigen Schritt) extrahierten Ordner ausführen. Ihr Terminal sollte jetzt so ähnlich aussehen (Dateipfade können abweichen):
 	
 	\begin{figure}[h!]
 	\centering
-	\includegraphics[width=\textwidth]{imgs/julia_REPL.png}
+	\includegraphics[width=0.7\textwidth]{imgs/julia_REPL.png}
 	\end{figure}
 
 	Dies ist die Julia Konsole (auch Julia REPL genannt). Sie ist eine Möglichkeit Julia zu verwenden. Geben Sie zum Test
@@ -149,16 +142,16 @@
 	
 	Um Notebooks erstellen oder öffnen zu können, muss grundsätzlich zuerst immer Julia geöffnet, IJulia geladen und dann der Jupyter Notebook Server gestartet werden. Im Folgenden wird der erstmalige Vorgang beschrieben, der auch die automatische Installation von Jupyter beinhaltet. 
 	
-	Stellen Sie sicher, dass Sie eine Julia Konsole geöffnet haben (Dies sollte nach dem vorangegangenen Abschnitt noch der Fall sein, falls nicht öffnen Sie sie erneut per Eingabe \texttt{julia} in Ihrem Terminal) und führen Sie darin folgenden Befehl aus:
+	Stellen Sie sicher, dass Sie eine Julia Konsole geöffnet haben und führen Sie darin folgenden Befehl aus:
 	
 	\begin{lstlisting}
-	ENV["JUPYTER"]=""
+	ENV["JUPYTER"]=""; ENV["PYTHON"]=""
 	using IJulia; notebook()
 	\end{lstlisting}
 	
-	Die erste Zeile wird nur bei der ersten Als erstes wird Julia selbst mittels \texttt{ENV["JUPYTER"]=""} mitgeteilt, dass es keine bestehende Jupyter Version suchen sondern selbst eine neue Version installieren soll.
+	Die erste Zeile wird nur vor der ersten Installation benötigt. Hier wird Julia selbst mittels \texttt{ENV["JUPYTER"]=""} und \texttt{ENV["PYTHON"]=""} mitgeteilt, dass es keine bestehende Jupyter oder Python Versionen suchen sondern selbst eine neue Version installieren soll, sofern benötigt.
 	
-	Der erste Teil des nachfolgenden Befehls, \texttt{using IJulia}, lädt IJulia. Der zweite Teil des Befehls, \texttt{notebook()}, versucht den Jupyter Notebook Server zu starten. Julia wird feststellen, dass dieser beim ersten Start noch nicht installiert ist, und fragt uns, ob es Jupyter für uns installieren soll:
+	Der nachfolgenden Befehl, \texttt{using IJulia}, lädt IJulia und versucht den Jupyter Notebook Server mittels \texttt{notebook()} zu starten. Julia wird feststellen, dass dieser beim ersten Start noch nicht installiert ist, und fragt uns, ob es Jupyter für uns installieren soll:
 	
 	\begin{figure}[h!]
 	\centering
@@ -171,11 +164,11 @@
 	
 	\begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.6\textwidth]{imgs/jupyter.png}
+	\includegraphics[width=0.5\textwidth]{imgs/jupyter.png}
 	\caption{Die Startseite des Jupyter Interfaces. \label{fig:jupyter}}
 	\end{figure}
 	
-	Der Server läuft solange die Julia Konsole im Hintergrund geöffnet ist. Sobald wir diese schließen wird der Server gestoppt.
+	Der Server läuft solange die Julia Konsole im Hintergrund geöffnet ist. Sobald wir diese schließen, wird der Server gestoppt.
 	
 	
 	
@@ -212,5 +205,52 @@
 	\end{figure}	
 
 	Die Installation von Julia, IJulia und Jupyter war also erfolgreich und die Computer-Physik kann beginnen!
+	
+	
+
+	\newpage
+	\section{Optional: Julia zum \texttt{PATH} hinzufügen / Julia global in der Konsole verfügbar machen}
+	
+	Damit Julia global in der Konsole per \texttt{julia} gestartet werden kann, muss es in Ihrer Umgebungsvariable \texttt{PATH} vorkommen. Sie haben dafür mehrere Möglichkeiten.
+	
+	
+	\subsection{Symbolischer Link}
+	
+	Fügen Sie in \texttt{/usr/bin} einen symbolischen Link hinzu, der zu der Datei \texttt{bin/julia} in dem von Ihnen extrahierten Ordner führt. Dies können Sie mittels
+		
+	\begin{lstlisting}[language=bash, columns=fixed, breaklines=false]
+	ln -s PATH_TO_JULIA_BINARIES/bin/julia /usr/bin/julia
+	\end{lstlisting}
+	
+	in Ihren Terminal durchführen.
+	
+	 
+	 
+	\subsection{Verändern der \texttt{.bash\_profile} Datei}
+	
+	Fügen Sie dafür die folgende Zeile am Ende der Datei \texttt{.bash\_profile} in Ihrem Home-Verzeichnis ein:
+	
+	\begin{lstlisting}[language=bash, columns=fixed, breaklines=false]
+	export PATH="PATH_TO_JULIA_BINARIES/bin:$PATH"
+	\end{lstlisting}
+	
+	Sie können dafür einen beliebigen Texteditor verwenden.
+	
+	Konkret können Sie beispielsweise so vorgehen:
+	
+	\begin{itemize}
+		\item Öffnen Sie ein Terminal.
+		\item Führen Sie den Befehl 
+		\begin{lstlisting}[language=bash, columns=fixed, breaklines=false]
+		vim .bash_profile
+		\end{lstlisting}
+		aus. Es öffnet sich der Konsolen-Text-Editor vim. (Eventuell ist die angezeigte Datei leer. Die nachfolgenden Schritte sollten aber in jedem Fall funktionieren)
+		\item Drücken Sie \texttt{SHIFT + G} (\texttt{UMSCHALT + G}), lassen Sie die Tasten los, und drücken Sie dann direkt die Taste \texttt{o} (der Buchstabe nicht die Zahl). (Sie sollten so ans Ende der Datei gesprungen sein und dort eine neue Zeile eingefügt haben.)
+		\item Fügen Sie nun die oben genannte Zeile ein (am besten abtippen!).
+		\item Drücken Sie die \texttt{ESC} Taste. Tippen Sie dann \texttt{:wq} ein und bestätigen Sie mit \texttt{ENTER}. (Ihre Eingabe sollte am unteren Rand erscheinen.)
+	\end{itemize}
+	
+	Wenn Sie nun das Terminal schließen und neu öffnen sollte julia per Befehl \texttt{julia} gestartet werden können.
+	
 	
 \end{document}
