@@ -47,7 +47,14 @@
 
 \section{IJulia Error}
 
-Nach der Installation von $IJulia$ wird von $notebook()$ kein Notebook geöffnet (Process.exit(0)). In manchen Fällen schlägt $Pkg.add("IJulia")$ fehl. (Build error)
+Nach der Installation von $IJulia$ wird von $notebook()$ kein Notebook geöffnet. In manchen Fällen schlägt $Pkg.add("IJulia")$ fehl. (Build error von ZMQ und MbedTLS)
+
+\begin{lstlisting}
+	julia> using IJulia
+	julia> notebook()
+	[ Info: running setenv(...)
+	Process(setenv(...), ProcessExited(1))
+\end{lstlisting}
 
 
 \section{Lösung 1: Anaconda}
